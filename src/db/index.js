@@ -23,17 +23,14 @@ const connectDB = async () => {
   try {
     const dbUri = `${process.env.MONGODB_URI}/${DB_NAME}`;
     console.log('Connecting to MongoDB with URI:', dbUri); // Log the connection string
-    const connectionInstance = await mongoose.connect(dbUri, {
+    const connectionInstance = await mongoose.connect(dbUri/*, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
+    }*/);
     console.log(`Connected to ${connectionInstance.connection.host}`);
   } catch (err) {
     console.error('MongoDB connection error:', err);
-    throw err;
   }
 };
 
 export default connectDB;
-
-
